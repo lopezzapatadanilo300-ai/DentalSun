@@ -610,22 +610,74 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(111,78,55,0.4);
         }
+        /* --- Ajustes para pantallas pequeñas --- */
+@media (max-width: 768px) {
+    nav {
+        padding: 0 1rem;
+    }
+
+    /* Ocultamos el menú por defecto */
+    nav ul {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: #6F4E37;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 1.5rem 0;
+        display: none;
+    }
+
+    /* Cuando esté activo, lo mostramos */
+    nav ul.active {
+        display: flex;
+    }
+
+    /* Estilo del botón hamburguesa */
+    .menu-toggle {
+        display: block;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: white;
+    }
+
+    /* Oculta el menú hamburguesa en pantallas grandes */
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    nav ul li a {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+}
+
     </style>
+    
 </head>
 <body>
     <header>
-        <nav>
-            <div class="logo">
-                <img src="imagenes/logo.png" alt="DentalSun Logo" style="height: 80px; vertical-align: middle;">
-            </div>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+  <nav>
+    <div class="logo">
+      <img src="imagenes/logo.png" alt="DentalSun Logo" style="height: 60px; vertical-align: middle;">
+    </div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
 
     <section id="inicio" class="hero">
         <div class="carousel">
@@ -943,6 +995,11 @@
             
             // Limpiar el formulario
             this.reset();
+            
+            function toggleMenu() {
+    const menu = document.querySelector('nav ul');
+    menu.classList.toggle('active');
+  }
         });
     </script>
 </body>
